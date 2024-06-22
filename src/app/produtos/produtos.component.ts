@@ -15,13 +15,13 @@ import { Observable } from 'rxjs';
 })
 export class ProdutosComponent {
 
-  produtos: Observable<Produto[]>;
+  produtos$: Observable<Produto[]>;
 
   readonly displayedColumns = ['_id', 'nome', 'descricao', 'preco', 'imagem'];
 
 
   constructor( private produtosService: ProdutosService){
-    this.produtos = this.produtosService.list();
+    this.produtos$ = this.produtosService.list();
   }
 
 }
