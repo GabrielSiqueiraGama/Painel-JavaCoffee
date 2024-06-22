@@ -3,7 +3,7 @@ import { ProdutosComponent } from './produtos/produtos.component';
 
 export const routes: Routes = [
   {
-    path: 'Produtos',
+    path: 'produtos',
     component: ProdutosComponent
   }
 ];

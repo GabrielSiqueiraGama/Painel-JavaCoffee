@@ -1,6 +1,8 @@
+import { ProdutosService } from './services/produtos.service';
 import { Component } from '@angular/core';
 import { Produto } from './models/produto';
 import { AppMaterialModule } from '../shared/app-material/app-material.module';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-produtos',
@@ -13,13 +15,13 @@ import { AppMaterialModule } from '../shared/app-material/app-material.module';
 })
 export class ProdutosComponent {
 
-  produtos: Produto[] = [
-    {_id: 1, nome: 'Cafe', descricao: 'lorem', preco: 10, imagem: 'Link ficticio'},
-  ];
+  produtos: Observable<Produto[]>;
 
   readonly displayedColumns = ['_id', 'nome', 'descricao', 'preco', 'imagem'];
-  constructor(){
-  }
 
+
+  constructor( private produtosService: ProdutosService){
+    this.produtos = this.produtosService.list();
+  }
 
 }
