@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { ProdutosRoutingModule } from './produtos-routing.module';
-import {MatTableModule} from '@angular/material/table';
+import { AppMaterialModule } from '../shared/app-material/app-material.module';
+
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
     ProdutosRoutingModule,
-    MatTableModule
+    AppMaterialModule
   ]
 })
 export class ProdutosModule { }

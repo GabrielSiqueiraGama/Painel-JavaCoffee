@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTableModule} from '@angular/material/table';
+import {MatCardModule} from '@angular/material/card';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,8 @@ import {MatTableModule} from '@angular/material/table';
     MatToolbarModule,
     RouterLink,
     RouterLinkActive,
-    MatTableModule],
+    MatTableModule,
+    MatCardModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
