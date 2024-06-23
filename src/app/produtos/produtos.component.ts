@@ -5,21 +5,23 @@ import { AppMaterialModule } from '../shared/app-material/app-material.module';
 import { Observable, catchError, of } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { ErrorDialogComponent } from '../shared/components/error-dialog/error-dialog.component';
+import { CategoriaPipe } from "../shared/pipes/categoria.pipe";
 
 @Component({
-  selector: 'app-produtos',
-  standalone: true,
-  imports: [
-    AppMaterialModule
-  ],
-  templateUrl: './produtos.component.html',
-  styleUrl: './produtos.component.scss'
+    selector: 'app-produtos',
+    standalone: true,
+    templateUrl: './produtos.component.html',
+    styleUrl: './produtos.component.scss',
+    imports: [
+        AppMaterialModule,
+        CategoriaPipe
+    ]
 })
 export class ProdutosComponent {
 
   produtos$: Observable<Produto[]>;
 
-  readonly displayedColumns = ['_id', 'nome', 'descricao', 'preco', 'imagem'];
+  readonly displayedColumns = ['_id', 'nome', 'descricao', 'preco', 'imagem', 'categoria'];
 
 
   constructor(

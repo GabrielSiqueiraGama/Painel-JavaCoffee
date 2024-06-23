@@ -1,7 +1,7 @@
 [
-  {"_id": 1, "nome": "Cafe", "descricao": "lorem", "preco": 10, "imagem": "Link ficticio"},
-  {"_id": 1, "nome": "Cafe", "descricao": "lorem", "preco": 10, "imagem": "Link ficticio"},
-  {"_id": 1, "nome": "Cafe", "descricao": "lorem", "preco": 10, "imagem": "Link ficticio"},
-  {"_id": 1, "nome": "Cafe", "descricao": "lorem", "preco": 10, "imagem": "Link ficticio"},
-  {"_id": 1, "nome": "Cafe", "descricao": "lorem", "preco": 10, "imagem": "Link ficticio"}
+  {"_id": 1, "nome": "Café", "descricao": "lorem", "preco": 10.80, "imagem": "Link ficticio", "categoria": "Bebida"},
+  {"_id": 2, "nome": "Sanduiche", "descricao": "lorem", "preco": 10.80, "imagem": "Link ficticio", "categoria": "Lanche"},
+  {"_id": 3, "nome": "Beirute & Café", "descricao": "lorem", "preco": 10.80, "imagem": "Link ficticio", "categoria": "Duplo"},
+  {"_id": 4, "nome": "Café com leite", "descricao": "lorem", "preco": 10.80, "imagem": "Link ficticio", "categoria": "Bebida"},
+  {"_id": 5, "nome": "Mocha & Wrap", "descricao": "lorem", "preco": 10.80, "imagem": "Link ficticio", "categoria": "Duplo"}
 ]
