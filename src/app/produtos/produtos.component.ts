@@ -2,7 +2,9 @@ import { ProdutosService } from './services/produtos.service';
 import { Component } from '@angular/core';
 import { Produto } from './models/produto';
 import { AppMaterialModule } from '../shared/app-material/app-material.module';
-import { Observable } from 'rxjs';
+import { Observable, catchError, of } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { ErrorDialogComponent } from '../shared/components/error-dialog/error-dialog.component';
 
 @Component({
   selector: 'app-produtos',
@@ -20,8 +22,22 @@ export class ProdutosComponent {
   readonly displayedColumns = ['_id', 'nome', 'descricao', 'preco', 'imagem'];
 
 
-  constructor( private produtosService: ProdutosService){
-    this.produtos$ = this.produtosService.list();
+  constructor(
+    private produtosService: ProdutosService,
+    public dialog: MatDialog
+  ){
+
+    this.produtos$ = this.produtosService.list().pipe(
+      catchError(error =>{
+        this.onError('Erro ao carregar os produtos');
+        return of ([])
+      })
+    );
   }
 
+  onError(errorMsg: string) {
+    this.dialog.open(ErrorDialogComponent, {
+      data: errorMsg,
+    });
+  }
 }

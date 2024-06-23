@@ -4,6 +4,8 @@ import {MatCardModule} from '@angular/material/card';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { CommonModule } from '@angular/common';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   exports:[
@@ -11,7 +13,9 @@ import { CommonModule } from '@angular/common';
     MatTableModule,
     MatToolbarModule,
     MatProgressSpinnerModule,
-    CommonModule
+    CommonModule,
+    MatDialogModule,
+    MatButtonModule
   ]
 })
 export class AppMaterialModule { }
