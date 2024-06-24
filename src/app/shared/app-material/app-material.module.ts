@@ -7,7 +7,9 @@ import { CommonModule } from '@angular/common';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
-
+import {MatSidenavModule} from "@angular/material/sidenav"
+import {MatListModule} from "@angular/material/list"
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   exports:[
@@ -18,7 +20,15 @@ import {MatIconModule} from '@angular/material/icon';
     CommonModule,
     MatDialogModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatSidenavModule,
+    MatListModule,
+    RouterModule
   ]
 })
-export class AppMaterialModule { }
+export class AppMaterialModule {
+  badgevisible = false;
+  badgevisibility() {
+    this.badgevisible = true;
+  }
+}
