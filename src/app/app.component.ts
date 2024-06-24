@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { RouterLink, RouterLinkActive, RouterModule, RouterOutlet } from '@angular/router';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTableModule} from '@angular/material/table';
 import {MatCardModule} from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
+import { SideMenuComponent } from './side-menu/side-menu/side-menu.component';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,9 @@ import { HttpClientModule } from '@angular/common/http';
     RouterLinkActive,
     MatTableModule,
     MatCardModule,
-    HttpClientModule],
+    HttpClientModule,
+    SideMenuComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
