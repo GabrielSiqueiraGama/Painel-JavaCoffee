@@ -9,7 +9,7 @@ import { delay, tap } from 'rxjs';
 })
 export class ProdutosService {
 
-  private readonly API = '/assets/produtos.json';
+  private readonly API = 'http://localhost:8080/api/cardapio';
 
   constructor(public httpClient: HttpClient) { }
 
