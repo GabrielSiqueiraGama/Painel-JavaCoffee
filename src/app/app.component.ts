@@ -4,20 +4,23 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTableModule} from '@angular/material/table';
 import {MatCardModule} from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
-import { SideMenuComponent } from './side-menu/side-menu/side-menu.component';
+import { AppMaterialModule } from './shared/app-material/app-material.module';
+import { ToolbarSideNavComponent } from './menu/toolbar-side-nav/toolbar-side-nav.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
     RouterOutlet,
+    RouterModule,
     MatToolbarModule,
     RouterLink,
     RouterLinkActive,
     MatTableModule,
     MatCardModule,
     HttpClientModule,
-    SideMenuComponent,
+    ToolbarSideNavComponent,
+    AppMaterialModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'

@@ -1,14 +1,15 @@
-import { NgModule } from '@angular/core';
-import {MatTableModule} from '@angular/material/table';
-import {MatCardModule} from '@angular/material/card';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { CommonModule } from '@angular/common';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatButtonModule} from '@angular/material/button';
-import {MatIconModule} from '@angular/material/icon';
-import {MatSidenavModule} from "@angular/material/sidenav"
-import {MatListModule} from "@angular/material/list"
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatTableModule } from '@angular/material/table';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
@@ -23,7 +24,8 @@ import { RouterModule } from '@angular/router';
     MatIconModule,
     MatSidenavModule,
     MatListModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ]
 })
 export class AppMaterialModule {
