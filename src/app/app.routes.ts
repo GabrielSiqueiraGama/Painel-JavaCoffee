@@ -1,9 +1,20 @@
 import { Routes } from '@angular/router';
-import { ProdutosComponent } from './produtos/produtos.component';
 
 export const routes: Routes = [
+
   {
     path: 'produtos',
-    component: ProdutosComponent
+
+ children: [
+      {
+        path: '',
+        loadComponent: () => import('./produtos/produtos.component')
+      },
+      {
+        path: 'new',
+        loadComponent: () => import('./produtos/produtos-form/produtos-form.component'),
+      }
+    ],
+
   }
 ];

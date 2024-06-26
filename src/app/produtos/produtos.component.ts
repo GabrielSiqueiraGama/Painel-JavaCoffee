@@ -6,6 +6,7 @@ import { Observable, catchError, of } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { ErrorDialogComponent } from '../shared/components/error-dialog/error-dialog.component';
 import { CategoriaPipe } from "../shared/pipes/categoria.pipe";
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     selector: 'app-produtos',
@@ -17,7 +18,7 @@ import { CategoriaPipe } from "../shared/pipes/categoria.pipe";
         CategoriaPipe
     ]
 })
-export class ProdutosComponent {
+export default class ProdutosComponent {
 
   produtos$: Observable<Produto[]>;
 
@@ -26,7 +27,9 @@ export class ProdutosComponent {
 
   constructor(
     private produtosService: ProdutosService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router: Router,
+    private route: ActivatedRoute
   ){
 
     this.produtos$ = this.produtosService.list().pipe(
@@ -42,4 +45,9 @@ export class ProdutosComponent {
       data: errorMsg,
     });
   }
+
+  onAdd() {
+
+    this.router.navigate(['new'],{relativeTo: this.route});
+} ;
 }
