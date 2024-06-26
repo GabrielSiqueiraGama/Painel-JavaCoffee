@@ -21,7 +21,7 @@ export class ProdutosComponent {
 
   produtos$: Observable<Produto[]>;
 
-  readonly displayedColumns = ['_id', 'nome', 'descricao', 'preco', 'imagem', 'categoria'];
+  readonly displayedColumns = ['_id', 'nome', 'descricao', 'preco', 'imagem', 'categoria', 'actions'];
 
 
   constructor(
