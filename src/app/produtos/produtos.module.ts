@@ -5,6 +5,7 @@ import { AppMaterialModule } from '../shared/app-material/app-material.module';
 import { SharedModule } from '../shared/shared.module';
 import { MatDialogContent } from '@angular/material/dialog';
 import { CategoriaPipe } from '../shared/pipes/categoria.pipe';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [],
@@ -14,7 +15,8 @@ import { CategoriaPipe } from '../shared/pipes/categoria.pipe';
     ProdutosRoutingModule,
     SharedModule,
     MatDialogContent,
-    CategoriaPipe
+    CategoriaPipe,
+    ReactiveFormsModule
   ]
 })
 export class ProdutosModule { }
