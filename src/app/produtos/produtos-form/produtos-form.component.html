@@ -25,6 +25,12 @@
 
       <!-- Categoria Column -->
       <mat-form-field class="full-width">
+        <mat-label>Categoria</mat-label>
+        <mat-select formControlName="categoria">
+          <mat-option value="1">Bebida</mat-option>
+          <mat-option value="2">Lanche</mat-option>
+          <mat-option value="3">Duplo</mat-option>
+        </mat-select>
         <input matInput placeholder="Categoria: " formControlName="categoria">
       </mat-form-field>
     </form>
