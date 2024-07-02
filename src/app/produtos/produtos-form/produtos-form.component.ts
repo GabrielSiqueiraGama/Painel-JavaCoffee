@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AppMaterialModule } from '../../shared/app-material/app-material.module';
-import { Form, FormBuilder } from '@angular/forms';
+import {FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-produtos-form',
@@ -11,7 +11,7 @@ import { Form, FormBuilder } from '@angular/forms';
 })
 export default class ProdutosFormComponent {
 
-  form: FormBuilder;
+  form: FormGroup;
 
 constructor(private formBuilder: FormBuilder) {
   this.form = this.formBuilder.group({
@@ -19,6 +19,12 @@ constructor(private formBuilder: FormBuilder) {
     descricao: [null],
     preco: [null],
     imagem: [null],
+    categoria: [null]
   });
 }
+
+onSubmit(){
+
+}
+onCancel(){}
 }

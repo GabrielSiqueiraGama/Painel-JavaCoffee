@@ -1,1 +1,38 @@
-<p>produtos-form works!</p>
+<mat-card class="example-card" appearance="outlined">
+    <mat-card-content>
+    <mat-toolbar color="primary">Novo item</mat-toolbar>
+    <form [formGroup]="form">
+
+    <!-- Nome Column -->
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Nome: " formControlName="nome">
+      </mat-form-field>
+
+      <!-- Descrição Column -->
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Descricao: " formControlName="descricao">
+      </mat-form-field>
+
+      <!-- Preco Column -->
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Preco: " formControlName="preco">
+      </mat-form-field>
+
+      <!-- Imagem Column -->
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Imagem: " formControlName="imagem">
+      </mat-form-field>
+
+      <!-- Categoria Column -->
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Categoria: " formControlName="categoria">
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-flat-button color="primary" (click)="onSubmit()">Salvar</button>
+    <button mat-flat-button (click)="onCancel()">Cancelar</button>
+  </mat-card-actions>
+
+</mat-card>
