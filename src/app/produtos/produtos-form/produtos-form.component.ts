@@ -1,8 +1,10 @@
+import { Location } from '@angular/common';
 import { Component } from '@angular/core';
-import { AppMaterialModule } from '../../shared/app-material/app-material.module';
-import {FormBuilder, FormGroup } from '@angular/forms';
-import { ProdutosService } from '../services/produtos.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+
+import { AppMaterialModule } from '../../shared/app-material/app-material.module';
+import { ProdutosService } from '../services/produtos.service';
 
 @Component({
   selector: 'app-produtos-form',
@@ -15,7 +17,7 @@ export default class ProdutosFormComponent {
 
   form: FormGroup;
 
-constructor(private formBuilder: FormBuilder, private service: ProdutosService, private _snackBar: MatSnackBar) {
+constructor(private formBuilder: FormBuilder, private service: ProdutosService, private _snackBar: MatSnackBar, private location: Location) {
   this.form = this.formBuilder.group({
     nome: [null],
     descricao: [null],
@@ -26,13 +28,17 @@ constructor(private formBuilder: FormBuilder, private service: ProdutosService, 
 }
 onSubmit(){
   console.log(this.form.value)
-  this.service.save(this.form.value).subscribe(data => console.log(data), error=>this.onError());
+  this.service.save(this.form.value).subscribe(data => this.onSucess(), error=>this.onError());
+  this.location.back();
 }
 onCancel(){
-  console.log('tchau rs')
+  this.location.back();
 }
 
 private onError(){
   this._snackBar.open("Erro ao salvar um novo produto, contate um programador.", '', {duration: 3000});
+}
+private onSucess(){
+  this._snackBar.open("Produto salvo com sucesso.", '', {duration: 3000});
 }
 }
