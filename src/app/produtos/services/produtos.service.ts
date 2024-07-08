@@ -19,7 +19,7 @@ export class ProdutosService {
       delay(1000)
     );
   }
-  save(produtos: Produto) :Observable<Produto>{
+  save(produtos: Partial<Produto>) :Observable<Produto>{
     return this.httpClient.post<Produto>(this.API, produtos);
   }
 }
