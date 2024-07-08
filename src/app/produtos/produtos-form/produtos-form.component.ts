@@ -17,7 +17,11 @@ export default class ProdutosFormComponent {
 
   form: FormGroup;
 
-constructor(private formBuilder: FormBuilder, private service: ProdutosService, private _snackBar: MatSnackBar, private location: Location) {
+constructor(
+  private formBuilder: FormBuilder,
+  private service: ProdutosService,
+  private _snackBar: MatSnackBar,
+  private location: Location) {
   this.form = this.formBuilder.group({
     nome: [null],
     descricao: [null],
