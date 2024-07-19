@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ErrorDialogComponent } from '../shared/components/error-dialog/error-dialog.component';
 import { CategoriaPipe } from "../shared/pipes/categoria.pipe";
 import { ActivatedRoute, Router } from '@angular/router';
+import { ProdutosListaComponent } from './produtos-lista/produtos-lista.component';
 
 @Component({
     selector: 'app-produtos',
@@ -15,7 +16,8 @@ import { ActivatedRoute, Router } from '@angular/router';
     styleUrl: './produtos.component.scss',
     imports: [
         AppMaterialModule,
-        CategoriaPipe
+        CategoriaPipe,
+        ProdutosListaComponent
     ]
 })
 export default class ProdutosComponent {

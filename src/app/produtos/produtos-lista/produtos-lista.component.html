@@ -1,0 +1,66 @@
+<table mat-table [dataSource]="produtos" class="mat-elevation-z8">
+  <!--- Note that these columns can be defined in any order.
+      The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- _id Column -->
+  <ng-container matColumnDef="_id">
+    <th mat-header-cell *matHeaderCellDef>_id</th>
+    <td mat-cell *matCellDef="let produto">{{ produto._id }}</td>
+  </ng-container>
+  <!-- nome Column -->
+  <ng-container matColumnDef="nome">
+    <th mat-header-cell *matHeaderCellDef>Nome</th>
+    <td mat-cell *matCellDef="let produto">{{ produto.nome }}</td>
+  </ng-container>
+
+  <!-- descricao Column -->
+  <ng-container matColumnDef="descricao">
+    <th mat-header-cell *matHeaderCellDef>descricao</th>
+    <td mat-cell *matCellDef="let produto">{{ produto.descricao }}</td>
+  </ng-container>
+
+  <!-- preco Column -->
+  <ng-container matColumnDef="preco">
+    <th mat-header-cell *matHeaderCellDef>Preço</th>
+    <td mat-cell *matCellDef="let produto">{{ produto.preco }}</td>
+  </ng-container>
+
+  <!-- preco Column -->
+  <ng-container matColumnDef="imagem">
+    <th mat-header-cell *matHeaderCellDef>imagem</th>
+    <td mat-cell *matCellDef="let produto"><img src="{{ produto.imagem }}" alt="" class="imagem"> </td>
+  </ng-container>
+
+  <!-- categoria Column -->
+  <ng-container matColumnDef="categoria">
+    <th mat-header-cell *matHeaderCellDef>Categoria</th>
+    <td mat-cell *matCellDef="let produto">
+      {{ produto.categoria }}
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Categoria do produto"
+        fontIcon="{{ produto.categoria | categoria }}"
+      ></mat-icon>
+    </td>
+  </ng-container>
+
+  <!-- actions Column -->
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef>
+      <button mat-icon-button color="primary" aria-label="Adicionar um curso" (click)= onAdd()>
+        <mat-icon >add</mat-icon>
+      </button>
+    </mat-header-cell>
+    <mat-cell *matCellDef="let produto">
+      <button mat-icon-button="Adicionar um produto">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-buttonl="Adicionar um produto">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
