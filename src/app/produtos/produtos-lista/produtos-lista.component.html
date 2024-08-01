@@ -1,47 +1,47 @@
-<table mat-table [dataSource]="produtos" class="mat-elevation-z8">
+<mat-table  [dataSource]="produtos" class="mat-elevation-z8">
   <!--- Note that these columns can be defined in any order.
       The actual rendered columns are set as a property on the row definition" -->
 
   <!-- _id Column -->
   <ng-container matColumnDef="_id">
-    <th mat-header-cell *matHeaderCellDef>_id</th>
-    <td mat-cell *matCellDef="let produto">{{ produto._id }}</td>
+    <mat-header-cell  *matHeaderCellDef>_id</mat-header-cell>
+    <mat-cell  *matCellDef="let produto">{{ produto._id }}</mat-cell>
   </ng-container>
   <!-- nome Column -->
   <ng-container matColumnDef="nome">
-    <th mat-header-cell *matHeaderCellDef>Nome</th>
-    <td mat-cell *matCellDef="let produto">{{ produto.nome }}</td>
+    <mat-header-cell  *matHeaderCellDef>Nome</mat-header-cell>
+    <mat-cell  *matCellDef="let produto">{{ produto.nome }}</mat-cell>
   </ng-container>
 
   <!-- descricao Column -->
   <ng-container matColumnDef="descricao">
-    <th mat-header-cell *matHeaderCellDef>descricao</th>
-    <td mat-cell *matCellDef="let produto">{{ produto.descricao }}</td>
+    <mat-header-cell  *matHeaderCellDef>descricao</mat-header-cell>
+    <mat-cell  *matCellDef="let produto">{{ produto.descricao }}</mat-cell>
   </ng-container>
 
   <!-- preco Column -->
   <ng-container matColumnDef="preco">
-    <th mat-header-cell *matHeaderCellDef>Preço</th>
-    <td mat-cell *matCellDef="let produto">{{ produto.preco }}</td>
+    <mat-header-cell  *matHeaderCellDef>Preço</mat-header-cell>
+    <mat-cell  *matCellDef="let produto">{{ produto.preco }}</mat-cell>
   </ng-container>
 
   <!-- preco Column -->
   <ng-container matColumnDef="imagem">
-    <th mat-header-cell *matHeaderCellDef>imagem</th>
-    <td mat-cell *matCellDef="let produto"><img src="{{ produto.imagem }}" alt="" class="imagem"> </td>
+    <mat-header-cell  *matHeaderCellDef>imagem</mat-header-cell>
+    <mat-cell  *matCellDef="let produto"><img src="{{ produto.imagem }}" alt="" class="imagem"> </mat-cell>
   </ng-container>
 
   <!-- categoria Column -->
   <ng-container matColumnDef="categoria">
-    <th mat-header-cell *matHeaderCellDef>Categoria</th>
-    <td mat-cell *matCellDef="let produto">
+    <mat-header-cell  *matHeaderCellDef>Categoria</mat-header-cell>
+    <mat-cell  *matCellDef="let produto">
       {{ produto.categoria }}
       <mat-icon
         aria-hidden="false"
         aria-label="Categoria do produto"
         fontIcon="{{ produto.categoria | categoria }}"
       ></mat-icon>
-    </td>
+    </mat-cell>
   </ng-container>
 
   <!-- actions Column -->
@@ -61,6 +61,6 @@
     </mat-cell>
   </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-</table>
+  <mat-header-row  *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row  *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>

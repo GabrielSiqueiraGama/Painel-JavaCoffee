@@ -24,9 +24,6 @@ export default class ProdutosComponent {
 
   produtos$: Observable<Produto[]>;
 
-  readonly displayedColumns = ['_id', 'nome', 'descricao', 'preco', 'imagem', 'categoria', 'actions'];
-
-
   constructor(
     private produtosService: ProdutosService,
     public dialog: MatDialog,
