@@ -1,13 +1,13 @@
-import { ProdutosService } from './services/produtos.service';
+import { ProdutosService } from '../services/produtos.service';
 import { Component } from '@angular/core';
-import { Produto } from './models/produto';
-import { AppMaterialModule } from '../shared/app-material/app-material.module';
+import { Produto } from '../models/produto';
+import { AppMaterialModule } from '../../shared/app-material/app-material.module';
 import { Observable, catchError, of } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
-import { ErrorDialogComponent } from '../shared/components/error-dialog/error-dialog.component';
-import { CategoriaPipe } from "../shared/pipes/categoria.pipe";
+import { ErrorDialogComponent } from '../../shared/components/error-dialog/error-dialog.component';
+import { CategoriaPipe } from '../../shared/pipes/categoria.pipe';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProdutosListaComponent } from './produtos-lista/produtos-lista.component';
+import { ProdutosListaComponent } from '../produtos-lista/produtos-lista.component';
 
 @Component({
     selector: 'app-produtos',
