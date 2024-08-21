@@ -1,7 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AppMaterialModule } from '../../shared/app-material/app-material.module';
 import { Produto } from '../models/produto';
-import { ActivatedRoute, Router } from '@angular/router';
 import { CategoriaPipe } from '../../shared/pipes/categoria.pipe';
 
 @Component({
@@ -14,16 +13,13 @@ import { CategoriaPipe } from '../../shared/pipes/categoria.pipe';
 export class ProdutosListaComponent {
 
   @Input() produtos: Produto[] =[];
+  @Output() add = new EventEmitter(false);
 
   readonly displayedColumns = ['_id', 'nome', 'descricao', 'preco', 'imagem', 'categoria', 'actions'];
 
-  constructor(
-    private router: Router,
-    private route: ActivatedRoute
-  ){}
+  constructor(){}
 
   onAdd() {
-
-    this.router.navigate(['new'],{relativeTo: this.route});
+    this.add.emit(true);
 }
 }
