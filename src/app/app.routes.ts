@@ -8,7 +8,7 @@ export const routes: Routes = [
  children: [
       {
         path: '',
-        loadComponent: () => import('./produtos/produtos/produtos.component')
+        loadComponent: () => import('./produtos/containers/produtos/produtos.component')
       },
       {
         path: 'new',

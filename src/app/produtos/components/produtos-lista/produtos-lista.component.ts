@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { AppMaterialModule } from '../../shared/app-material/app-material.module';
-import { Produto } from '../models/produto';
-import { CategoriaPipe } from '../../shared/pipes/categoria.pipe';
+import { AppMaterialModule } from '../../../shared/app-material/app-material.module';
+import { Produto } from '../../models/produto';
+import { CategoriaPipe } from '../../../shared/pipes/categoria.pipe';
 
 @Component({
   selector: 'app-produtos-lista',
