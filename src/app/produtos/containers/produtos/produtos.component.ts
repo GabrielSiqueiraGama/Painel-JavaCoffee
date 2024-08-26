@@ -50,7 +50,9 @@ export default class ProdutosComponent {
   }
 
   onAdd() {
-
     this.router.navigate(['new'],{relativeTo: this.route});
-} ;
+  }
+  onEdit(produto: Produto){
+    this.router.navigate(['edit', produto._id],{relativeTo: this.route});//Navega na rota com o nome edit/produto_id
+  }
 }

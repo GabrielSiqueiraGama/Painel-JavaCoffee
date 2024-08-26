@@ -14,6 +14,7 @@ export class ProdutosListaComponent {
 
   @Input() produtos: Produto[] =[];
   @Output() add = new EventEmitter(false);
+  @Output() edit = new EventEmitter(false);
 
   readonly displayedColumns = ['_id', 'nome', 'descricao', 'preco', 'imagem', 'categoria', 'actions'];
 
@@ -21,5 +22,8 @@ export class ProdutosListaComponent {
 
   onAdd() {
     this.add.emit(true);
-}
+  }
+  onEdit(produto: Produto){
+    this.edit.emit(produto);
+  }
 }

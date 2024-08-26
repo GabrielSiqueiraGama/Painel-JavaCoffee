@@ -13,7 +13,11 @@ export const routes: Routes = [
       {
         path: 'new',
         loadComponent: () => import('./produtos/produtos-form/produtos-form.component'),
-      }
+      },
+      {
+        path: 'edit/:id',
+        loadComponent: () => import('./produtos/produtos-form/produtos-form.component'),
+      },
     ],
 
   }
