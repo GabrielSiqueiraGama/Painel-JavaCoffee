@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { produtosResolver } from './produtos/guards/produtos.resolver';
 
 export const routes: Routes = [
 
@@ -12,11 +13,11 @@ export const routes: Routes = [
       },
       {
         path: 'new',
-        loadComponent: () => import('./produtos/produtos-form/produtos-form.component'),
+        loadComponent: () => import('./produtos/produtos-form/produtos-form.component'), resolve: { produto: produtosResolver }
       },
       {
         path: 'edit/:id',
-        loadComponent: () => import('./produtos/produtos-form/produtos-form.component'),
+        loadComponent: () => import('./produtos/produtos-form/produtos-form.component'), resolve: {produto: produtosResolver},
       },
     ],
 
