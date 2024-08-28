@@ -36,7 +36,8 @@ export default class ProdutosFormComponent {
 
   onSubmit(){
     console.log(this.form.value)
-    this.service.save(this.form.value).subscribe(data => this.onSucess(), error=>this.onError());
+    this.service.save(this.form.value)
+      .subscribe(data => this.onSucess(), error=>this.onError());
     this.location.back();
   }
   onCancel(){

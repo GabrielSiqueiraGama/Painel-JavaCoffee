@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Produto } from '../models/produto';
 
 import { HttpClient } from '@angular/common/http';
-import {Observable, delay, tap } from 'rxjs';
+import {delay, first, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +26,19 @@ export class ProdutosService {
   loadById(id: number){
     return this.httpClient.get<Produto>(`${this.API}/${id}`)
   }
-  save(produtos: Partial<Produto>) :Observable<Produto>{
-    return this.httpClient.post<Produto>(this.API, produtos);
+  save(record: Partial<Produto>) {
+    console.log(record);
+    if(record._id){
+      console.log('update');
+      return this.update(record);
+    }
+    console.log('create');
+    return this.create(record);
+  }
+  private create(record: Partial<Produto>) {
+    return this.httpClient.post<Produto>(this.API, record).pipe(first());
+  }
+  private update(record: Partial<Produto>){
+    return this.httpClient.put<Produto>(`${this.API}/${record._id}`, record).pipe(first());
   }
 }
