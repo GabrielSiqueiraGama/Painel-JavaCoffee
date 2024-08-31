@@ -27,7 +27,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export default class ProdutosComponent {
 
-  produtos$: Observable<Produto[]>;
+  produtos$: Observable<Produto[]> | null = null;
 
   constructor(
     private produtosService: ProdutosService,
@@ -36,13 +36,7 @@ export default class ProdutosComponent {
     private route: ActivatedRoute,
     private _snackBar: MatSnackBar,
   ){
-
-    this.produtos$ = this.produtosService.list().pipe(
-      catchError(error =>{
-        this.onError('Erro ao carregar os produtos');
-        return of ([])
-      })
-    );
+    this.refresh();
   }
 
   refresh(){
@@ -72,6 +66,7 @@ export default class ProdutosComponent {
     this.produtosService.delete(produto._id).subscribe(()=>{
       this._snackBar.open("Produto deletado com sucesso.", '', {duration: 3000, verticalPosition: 'top', horizontalPosition: 'center'});
       this.refresh();
-    });
+    },
+  error => this.onError("Error ao deletar produto"));
   }
 }
