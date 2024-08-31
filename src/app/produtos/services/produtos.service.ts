@@ -41,7 +41,7 @@ export class ProdutosService {
   private update(record: Partial<Produto>){
     return this.httpClient.put<Produto>(`${this.API}/${record._id}`, record).pipe(first());
   }
-  remove(id: number){
+  delete(id: number){
     return this.httpClient.delete(`${this.API}/${id}`).pipe(first());
   }
 }

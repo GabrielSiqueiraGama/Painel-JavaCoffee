@@ -11,6 +11,7 @@ import { ProdutosService } from '../../services/produtos.service';
 import { ErrorDialogComponent } from '../../../shared/components/error-dialog/error-dialog.component';
 import { Produto } from '../../models/produto';
 import { ProdutosListaComponent } from '../../components/produtos-lista/produtos-lista.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -32,7 +33,8 @@ export default class ProdutosComponent {
     private produtosService: ProdutosService,
     public dialog: MatDialog,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private _snackBar: MatSnackBar,
   ){
 
     this.produtos$ = this.produtosService.list().pipe(
@@ -54,5 +56,10 @@ export default class ProdutosComponent {
   }
   onEdit(produto: Produto){
     this.router.navigate(['edit', produto._id],{relativeTo: this.route});//Navega na rota com o nome edit/produto_id
+  }
+  onDelete(produto: Produto){
+    this.produtosService.delete(produto._id).subscribe(()=>{
+      this._snackBar.open("Produto deletado com sucesso.", '', {duration: 3000, verticalPosition: 'top', horizontalPosition: 'center'});
+    });
   }
 }

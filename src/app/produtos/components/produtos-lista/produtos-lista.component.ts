@@ -15,6 +15,7 @@ export class ProdutosListaComponent {
   @Input() produtos: Produto[] =[];
   @Output() add = new EventEmitter(false);
   @Output() edit = new EventEmitter(false);
+  @Output() delete = new EventEmitter(false);
 
   readonly displayedColumns = ['_id', 'nome', 'descricao', 'preco', 'imagem', 'categoria', 'actions'];
 
@@ -25,5 +26,8 @@ export class ProdutosListaComponent {
   }
   onEdit(produto: Produto){
     this.edit.emit(produto);
+  }
+  onDelete(produto: Produto){
+    this.delete.emit(produto);
   }
 }
