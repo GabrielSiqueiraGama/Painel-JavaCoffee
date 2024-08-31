@@ -45,6 +45,14 @@ export default class ProdutosComponent {
     );
   }
 
+  refresh(){
+    this.produtos$ = this.produtosService.list().pipe(
+      catchError(error =>{
+        this.onError('Erro ao carregar os produtos');
+        return of ([])
+      })
+    );
+  }
   onError(errorMsg: string) {
     this.dialog.open(ErrorDialogComponent, {
       data: errorMsg,
@@ -55,11 +63,15 @@ export default class ProdutosComponent {
     this.router.navigate(['new'],{relativeTo: this.route});
   }
   onEdit(produto: Produto){
+
     this.router.navigate(['edit', produto._id],{relativeTo: this.route});//Navega na rota com o nome edit/produto_id
+    this.refresh();
   }
   onDelete(produto: Produto){
+
     this.produtosService.delete(produto._id).subscribe(()=>{
       this._snackBar.open("Produto deletado com sucesso.", '', {duration: 3000, verticalPosition: 'top', horizontalPosition: 'center'});
+      this.refresh();
     });
   }
 }
