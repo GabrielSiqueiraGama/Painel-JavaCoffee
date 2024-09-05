@@ -12,6 +12,7 @@ import { ErrorDialogComponent } from '../../../shared/components/error-dialog/er
 import { Produto } from '../../models/produto';
 import { ProdutosListaComponent } from '../../components/produtos-lista/produtos-lista.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ConfirmationComponent } from '../../../shared/components/confirmation/confirmation.component';
 
 
 @Component({
@@ -62,11 +63,19 @@ export default class ProdutosComponent {
     this.refresh();
   }
   onDelete(produto: Produto){
+    const dialogRef = this.dialog.open(ConfirmationComponent, {
+      data: 'Deseja realmente excluir o item selecionado?',
+    });
 
-    this.produtosService.delete(produto._id).subscribe(()=>{
-      this._snackBar.open("Produto deletado com sucesso.", '', {duration: 3000, verticalPosition: 'top', horizontalPosition: 'center'});
-      this.refresh();
-    },
-  error => this.onError("Error ao deletar produto"));
+    dialogRef.afterClosed().subscribe((result: boolean) => {
+      if(result){
+        this.produtosService.delete(produto._id).subscribe(()=>{
+          this._snackBar.open("Produto deletado com sucesso.", '', {duration: 3000, verticalPosition: 'top', horizontalPosition: 'center'});
+          this.refresh();
+        },
+        error => this.onError("Error ao deletar produto"));
+      }
+    });
+
   }
 }

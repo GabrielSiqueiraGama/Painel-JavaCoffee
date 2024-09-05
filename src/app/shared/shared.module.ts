@@ -4,6 +4,7 @@ import { ErrorDialogComponent } from './components/error-dialog/error-dialog.com
 import { AppMaterialModule } from './app-material/app-material.module';
 import { MatDialogContent } from '@angular/material/dialog';
 import { CategoriaPipe } from './pipes/categoria.pipe';
+import { ConfirmationComponent } from './components/confirmation/confirmation.component';
 
 
 
@@ -15,8 +16,12 @@ import { CategoriaPipe } from './pipes/categoria.pipe';
     ErrorDialogComponent,
     MatDialogContent,
     CategoriaPipe,
-
+    ConfirmationComponent
   ],
-  exports: [ErrorDialogComponent, CategoriaPipe]
+  exports: [
+    ErrorDialogComponent,
+    CategoriaPipe,
+    ConfirmationComponent
+  ]
 })
 export class SharedModule { }
