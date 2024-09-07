@@ -13,11 +13,11 @@ export const routes: Routes = [
       },
       {
         path: 'new',
-        loadComponent: () => import('./produtos/produtos-form/produtos-form.component'), resolve: { produto: produtosResolver }
+        loadComponent: () => import('./produtos/containers/produtos-form/produtos-form.component'), resolve: { produto: produtosResolver }
       },
       {
         path: 'edit/:id',
-        loadComponent: () => import('./produtos/produtos-form/produtos-form.component'), resolve: {produto: produtosResolver},
+        loadComponent: () => import('./produtos/containers/produtos-form/produtos-form.component'), resolve: {produto: produtosResolver},
       },
     ],
 

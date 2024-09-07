@@ -1,12 +1,12 @@
 import { Location } from '@angular/common';
 import { Component } from '@angular/core';
-import { NonNullableFormBuilder } from '@angular/forms';
+import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { AppMaterialModule } from '../../shared/app-material/app-material.module';
-import { ProdutosService } from '../services/produtos.service';
+import { AppMaterialModule } from '../../../shared/app-material/app-material.module';
+import { ProdutosService } from '../../services/produtos.service';
 import { ActivatedRoute } from '@angular/router';
-import { Produto } from '../models/produto';
+import { Produto } from '../../models/produto';
 
 @Component({
   selector: 'app-produtos-form',
@@ -19,11 +19,12 @@ export default class ProdutosFormComponent {
 
   form = this.formBuilder.group({
     _id :[0],
-    nome: [''],
-    descricao: [''],
-    preco: [0],
-    imagem: [''],
-    categoria: ['']
+    nome: ['', [Validators.required,
+      Validators.minLength(5), Validators.maxLength(100)]],
+    descricao: ['', [Validators.required]],
+    preco: [0, [Validators.required]],
+    imagem: ['', [Validators.required]],
+    categoria: ['', [Validators.required]]
   });
 
   constructor(
@@ -49,6 +50,22 @@ export default class ProdutosFormComponent {
   }
   private onSucess(){
     this._snackBar.open("Produto salvo com sucesso.", '', {duration: 3000});
+  }
+  getErrorMessage(fieldname: string){
+    const field = this.form.get(fieldname);
+
+    if(field?.hasError('required')){
+      return 'Campo obrigatorio.';
+    }
+    if(field?.hasError('minLength')){
+      const requiredLength = field.errors ? field.errors['minlength']['requiredlength']: 5;
+      return `Tamanho minimo de caracteres é de: ${requiredLength} do que o permitido.`;
+    }
+    if(field?.hasError('maxLength')){
+      const requiredLength = field.errors ? field.errors['maxlength']['requiredlength']: 100;
+      return `Tamanho maximo de caracteres é de: ${requiredLength} do que o permitido.`;
+    }
+    return 'erro';
   }
   ngOnInit(): void{
     const produto: Produto = this.route.snapshot.data['produto'];

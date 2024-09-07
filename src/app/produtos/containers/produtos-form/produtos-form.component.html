@@ -8,21 +8,25 @@
     <!-- Nome Column -->
       <mat-form-field class="full-width">
         <input matInput placeholder="Nome: " formControlName="nome">
+        <mat-error *ngIf="form.get('nome')?.invalid">{{getErrorMessage('nome')}}</mat-error>
       </mat-form-field>
 
       <!-- Descrição Column -->
       <mat-form-field class="full-width">
         <input matInput placeholder="Descricao: " formControlName="descricao">
+        <mat-error *ngIf="form.get('descricao')?.invalid">{{getErrorMessage('descricao')}}</mat-error>
       </mat-form-field>
 
       <!-- Preco Column -->
       <mat-form-field class="full-width">
         <input matInput placeholder="Preco: " formControlName="preco">
+        <mat-error *ngIf="form.get('preco')?.invalid">{{getErrorMessage('preco')}}</mat-error>
       </mat-form-field>
 
       <!-- Imagem Column -->
       <mat-form-field class="full-width">
         <input matInput placeholder="Imagem: " formControlName="imagem">
+        <mat-error *ngIf="form.get('imagem')?.invalid">{{getErrorMessage('imagem')}}</mat-error>
       </mat-form-field>
 
       <!-- Categoria Column -->
