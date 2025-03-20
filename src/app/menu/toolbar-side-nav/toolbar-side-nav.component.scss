@@ -2,11 +2,14 @@
   height: calc(205vh - 112vh);
 }
 .mat-sidenav{
-  width: 200px;
+  width: 400px;
   background-color: #2D1913;
   color: white;
 }
 a{
+  display: flex;
+  justify-content: center;
   text-decoration: none;
   color: white;
+  margin: 20px 0;
 }

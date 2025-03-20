@@ -1,11 +1,13 @@
 <mat-card appearance="outlined">
   <mat-card-content>
-    <mat-toolbar color="primary">Produtos disponiveis:</mat-toolbar>
-    <app-produtos-lista *ngIf="produtos$ | async as produtos; else loading"
-     [produtos]="produtos"
-     (add)="onAdd()"
-     (edit)="onEdit($event)"
-     (delete)="onDelete($event)"></app-produtos-lista>
+    <mat-toolbar color="primary">Listagem de produtos:</mat-toolbar>
+    <app-produtos-lista
+      *ngIf="produtos$ | async as produtos; else loading"
+      [produtos]="produtos"
+      (add)="onAdd()"
+      (edit)="onEdit($event)"
+      (delete)="onDelete($event)"
+    ></app-produtos-lista>
     <ng-template #loading>
       <div class="loading-spinner">
         <mat-spinner></mat-spinner>

@@ -12,7 +12,7 @@ export class ProdutosService {
     throw new Error('Method not implemented.');
   }
 
-  private readonly API = 'http://localhost:8080/api/cardapio';
+  private readonly API = 'http://localhost:8080/api/produto';
 
   constructor(public httpClient: HttpClient) { }
 
