@@ -17,7 +17,7 @@ export class ProdutosListaComponent {
   @Output() edit = new EventEmitter(false);
   @Output() delete = new EventEmitter(false);
 
-  readonly displayedColumns = ['_id', 'nome', 'descricao', 'preco', 'imagem', 'categoria', 'actions'];
+  readonly displayedColumns = ['nome', 'descricao', 'preco', 'imagem', 'categoria', 'actions'];
 
   constructor(){}
 

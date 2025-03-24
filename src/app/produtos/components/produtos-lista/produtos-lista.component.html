@@ -1,40 +1,39 @@
-<mat-table  [dataSource]="produtos" class="mat-elevation-z8">
+<mat-table [dataSource]="produtos" class="mat-elevation-z8">
   <!--- Note that these columns can be defined in any order.
       The actual rendered columns are set as a property on the row definition" -->
 
   <!-- _id Column -->
-  <ng-container matColumnDef="_id">
-    <mat-header-cell  *matHeaderCellDef>_id</mat-header-cell>
-    <mat-cell  *matCellDef="let produto">{{ produto._id }}</mat-cell>
-  </ng-container>
+
   <!-- nome Column -->
   <ng-container matColumnDef="nome">
-    <mat-header-cell  *matHeaderCellDef>Nome</mat-header-cell>
-    <mat-cell  *matCellDef="let produto">{{ produto.nome }}</mat-cell>
+    <mat-header-cell *matHeaderCellDef>Nome</mat-header-cell>
+    <mat-cell *matCellDef="let produto">{{ produto.nome }}</mat-cell>
   </ng-container>
 
   <!-- descricao Column -->
   <ng-container matColumnDef="descricao">
-    <mat-header-cell  *matHeaderCellDef>descricao</mat-header-cell>
-    <mat-cell  *matCellDef="let produto">{{ produto.descricao }}</mat-cell>
+    <mat-header-cell *matHeaderCellDef>descricao</mat-header-cell>
+    <mat-cell *matCellDef="let produto">{{ produto.descricao }}</mat-cell>
   </ng-container>
 
   <!-- preco Column -->
   <ng-container matColumnDef="preco">
-    <mat-header-cell  *matHeaderCellDef>Preço</mat-header-cell>
-    <mat-cell  *matCellDef="let produto">{{ produto.preco }}</mat-cell>
+    <mat-header-cell *matHeaderCellDef>Preço</mat-header-cell>
+    <mat-cell *matCellDef="let produto">{{ produto.preco }}</mat-cell>
   </ng-container>
 
   <!-- preco Column -->
   <ng-container matColumnDef="imagem">
-    <mat-header-cell  *matHeaderCellDef>imagem</mat-header-cell>
-    <mat-cell  *matCellDef="let produto"><img src="{{ produto.imagem }}" alt="" class="imagem"> </mat-cell>
+    <mat-header-cell *matHeaderCellDef>imagem</mat-header-cell>
+    <mat-cell *matCellDef="let produto"
+      ><img src="{{ produto.imagem }}" alt="" class="imagem" />
+    </mat-cell>
   </ng-container>
 
   <!-- categoria Column -->
   <ng-container matColumnDef="categoria">
-    <mat-header-cell  *matHeaderCellDef>Categoria</mat-header-cell>
-    <mat-cell  *matCellDef="let produto">
+    <mat-header-cell *matHeaderCellDef>Categoria</mat-header-cell>
+    <mat-cell *matCellDef="let produto">
       {{ produto.categoria }}
       <mat-icon
         aria-hidden="false"
@@ -47,20 +46,28 @@
   <!-- actions Column -->
   <ng-container matColumnDef="actions">
     <mat-header-cell *matHeaderCellDef>
-      <button mat-icon-button color="primary" aria-label="Adicionar um curso" (click)= onAdd()>
-        <mat-icon >add</mat-icon>
+      <button
+        mat-icon-button
+        color="primary"
+        aria-label="Adicionar um curso"
+        (click)="onAdd()"
+      >
+        <mat-icon>add</mat-icon>
       </button>
     </mat-header-cell>
     <mat-cell *matCellDef="let produto">
-      <button mat-icon-button="Adicionar um produto" (click)= onEdit(produto)>
-        <mat-icon >edit</mat-icon>
+      <button mat-icon-button="Adicionar um produto" (click)="onEdit(produto)">
+        <mat-icon>edit</mat-icon>
       </button>
-      <button mat-icon-buttonl="Adicionar um produto" (click)="onDelete(produto)">
+      <button
+        mat-icon-buttonl="Adicionar um produto"
+        (click)="onDelete(produto)"
+      >
         <mat-icon>delete</mat-icon>
       </button>
     </mat-cell>
   </ng-container>
 
-  <mat-header-row  *matHeaderRowDef="displayedColumns"></mat-header-row>
-  <mat-row  *matRowDef="let row; columns: displayedColumns"></mat-row>
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
 </mat-table>
