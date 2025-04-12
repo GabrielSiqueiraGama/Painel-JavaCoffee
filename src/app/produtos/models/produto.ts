@@ -1,3 +1,5 @@
+import { Acompanhamento } from "./acompanhamento";
+
 export interface Produto {
   _id: number;
   nome: string;
@@ -5,4 +7,6 @@ export interface Produto {
   preco: number;
   imagem: string;
   categoria: string;
+
+  acompanhamentos?: Acompanhamento[];//A "?" afirma que pode ser vazio
 }
