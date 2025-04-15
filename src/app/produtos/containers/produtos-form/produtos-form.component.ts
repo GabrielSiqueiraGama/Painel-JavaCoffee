@@ -7,6 +7,7 @@ import { AppMaterialModule } from '../../../shared/app-material/app-material.mod
 import { ProdutosService } from '../../services/produtos.service';
 import { ActivatedRoute } from '@angular/router';
 import { Produto } from '../../models/produto';
+import { Acompanhamento } from '../../models/acompanhamento';
 
 @Component({
   selector: 'app-produtos-form',
@@ -35,6 +36,13 @@ export default class ProdutosFormComponent {
     private route: ActivatedRoute
     ) {}
 
+  private createAcompanhamento(acompanhamento: Acompanhamento ={id: '', nome: '', descricao: ''}){
+    return this.formBuilder.group({
+      id: [acompanhamento.id],
+      nome: [acompanhamento.nome],
+      descricao: [acompanhamento.descricao ]
+    })
+  }
   onSubmit(){
     console.log(this.form.value)
     this.service.save(this.form.value)
