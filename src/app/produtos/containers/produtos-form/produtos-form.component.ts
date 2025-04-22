@@ -1,6 +1,6 @@
 import { Location } from '@angular/common';
 import { Component } from '@angular/core';
-import { NonNullableFormBuilder, Validators } from '@angular/forms';
+import { FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { AppMaterialModule } from '../../../shared/app-material/app-material.module';
@@ -18,7 +18,8 @@ import { Acompanhamento } from '../../models/acompanhamento';
 })
 export default class ProdutosFormComponent {
 
-  form = this.formBuilder.group({
+  form!: FormGroup;
+  /*form = this.formBuilder.group({
     _id :[0],
     nome: ['', [Validators.required,
       Validators.minLength(5), Validators.maxLength(100)]],
@@ -26,7 +27,7 @@ export default class ProdutosFormComponent {
     preco: [0, [Validators.required]],
     imagem: ['', [Validators.required]],
     categoria: ['', [Validators.required]]
-  });
+  });*/
 
   constructor(
     private formBuilder: NonNullableFormBuilder,
@@ -36,6 +37,15 @@ export default class ProdutosFormComponent {
     private route: ActivatedRoute
     ) {}
 
+    private obterAcompanhamento(produto: Produto){
+      const acompanhamentos = [];
+       if(produto?.acompanhamentos){
+        produto.acompanhamentos.forEach(acompanhamento => acompanhamentos.push(this.createAcompanhamento(acompanhamento)))
+       }else{
+        acompanhamentos.push(this.createAcompanhamento );
+       }
+      return acompanhamentos;
+    }
   private createAcompanhamento(acompanhamento: Acompanhamento ={id: '', nome: '', descricao: ''}){
     return this.formBuilder.group({
       id: [acompanhamento.id],
@@ -77,13 +87,16 @@ export default class ProdutosFormComponent {
   }
   ngOnInit(): void{
     const produto: Produto = this.route.snapshot.data['produto'];
-    this.form.setValue({
-      _id: produto._id,
-      nome: produto.nome,
-      descricao: produto.descricao,
-      preco: produto.preco,
-      imagem: produto.imagem,
-      categoria: produto.categoria
+    //this.form.setValue({_id: produto._id,nome: produto.nome,descricao: produto.descricao,preco: produto.preco,imagem: produto.imagem,categoria: produto.categoria});
+    this.form = this.formBuilder.group({
+      _id :[produto._id],
+      nome: [produto.nome, [Validators.required,
+        Validators.minLength(5), Validators.maxLength(100)]],
+      descricao: [produto.descricao, [Validators.required]],
+      preco: [produto.preco, [Validators.required]],
+      imagem: [produto.imagem, [Validators.required]],
+      categoria: [produto.categoria, [Validators.required]],
+      acompanhamentos: this.formBuilder.array(this.obterAcompanhamento(produto))
     });
   }
 }
