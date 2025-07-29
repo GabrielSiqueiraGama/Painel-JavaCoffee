@@ -7,7 +7,7 @@ import { AppMaterialModule } from '../../../shared/app-material/app-material.mod
 import { ProdutosService } from '../../services/produtos.service';
 import { ActivatedRoute } from '@angular/router';
 import { Produto } from '../../models/produto';
-import { Acompanhamento } from '../../models/acompanhamento';
+import { Ingrediente } from '../../models/Ingrediente';
 
 @Component({
   selector: 'app-produtos-form',
@@ -37,20 +37,19 @@ export default class ProdutosFormComponent {
     private route: ActivatedRoute
     ) {}
 
-    private obterAcompanhamento(produto: Produto){
-      const acompanhamentos = [];
-       if(produto?.acompanhamentos){
-        produto.acompanhamentos.forEach(acompanhamento => acompanhamentos.push(this.createAcompanhamento(acompanhamento)))
+    private retrieveIngrediente(produto: Produto){
+      const ingredientes = [];
+       if(produto?.ingredientes){
+        produto.ingredientes.forEach(ingrediente => ingredientes.push(this.createIngrediente(ingrediente)))
        }else{
-        acompanhamentos.push(this.createAcompanhamento );
+        ingredientes.push(this.createIngrediente );
        }
-      return acompanhamentos;
+      return ingredientes;
     }
-  private createAcompanhamento(acompanhamento: Acompanhamento ={id: '', nome: '', descricao: ''}){
+  private createIngrediente(ingrediente: Ingrediente ={id: '', nome: ''}){
     return this.formBuilder.group({
-      id: [acompanhamento.id],
-      nome: [acompanhamento.nome],
-      descricao: [acompanhamento.descricao ]
+      id: [ingrediente.id],
+      nome: [ingrediente.nome],
     })
   }
   onSubmit(){
@@ -87,6 +86,7 @@ export default class ProdutosFormComponent {
   }
   ngOnInit(): void{
     const produto: Produto = this.route.snapshot.data['produto'];
+    console.log(produto);
     //this.form.setValue({_id: produto._id,nome: produto.nome,descricao: produto.descricao,preco: produto.preco,imagem: produto.imagem,categoria: produto.categoria});
     this.form = this.formBuilder.group({
       _id :[produto._id],
@@ -96,7 +96,7 @@ export default class ProdutosFormComponent {
       preco: [produto.preco, [Validators.required]],
       imagem: [produto.imagem, [Validators.required]],
       categoria: [produto.categoria, [Validators.required]],
-      acompanhamentos: this.formBuilder.array(this.obterAcompanhamento(produto))
+      ingredientes: this.formBuilder.array(this.retrieveIngrediente(produto))
     });
   }
 }

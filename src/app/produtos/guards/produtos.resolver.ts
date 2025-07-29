@@ -15,6 +15,6 @@ export const produtosResolver: ResolveFn<Observable<Produto>> = (route, state,  
     preco: 0,
     imagem: '',
     categoria: '',
-    acompanhamentos: [],
+    ingredientes: [],
     });
 };

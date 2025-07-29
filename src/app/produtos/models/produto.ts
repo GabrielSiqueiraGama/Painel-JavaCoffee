@@ -1,4 +1,5 @@
-import { Acompanhamento } from "./acompanhamento";
+import { Ingrediente } from "./Ingrediente";
+
 
 export interface Produto {
   _id: number;
@@ -8,5 +9,5 @@ export interface Produto {
   imagem: string;
   categoria: string;
 
-  acompanhamentos?: Acompanhamento[];//A "?" afirma que pode ser vazio
+  ingredientes?: Ingrediente[];//A "?" afirma que pode ser vazio
 }
