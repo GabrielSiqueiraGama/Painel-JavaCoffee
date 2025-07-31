@@ -6,6 +6,7 @@ import {MatCardModule} from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
 import { AppMaterialModule } from './shared/app-material/app-material.module';
 import { ToolbarSideNavComponent } from './menu/toolbar-side-nav/toolbar-side-nav.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,7 @@ import { ToolbarSideNavComponent } from './menu/toolbar-side-nav/toolbar-side-na
     RouterOutlet,
     RouterModule,
     MatToolbarModule,
+    MatAutocompleteModule,
     RouterLink,
     RouterLinkActive,
     MatTableModule,

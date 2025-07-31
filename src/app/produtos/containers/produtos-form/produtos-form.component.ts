@@ -1,6 +1,6 @@
 import { Location } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
+import { FormGroup, NonNullableFormBuilder, UntypedFormArray, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { AppMaterialModule } from '../../../shared/app-material/app-material.module';
@@ -84,6 +84,11 @@ export default class ProdutosFormComponent {
     }
     return 'erro';
   }
+
+  getIngredientesFromArray(){
+    return (<UntypedFormArray>this.form.get('ingredientes')).controls;
+  }
+
   ngOnInit(): void{
     const produto: Produto = this.route.snapshot.data['produto'];
     console.log(produto);
