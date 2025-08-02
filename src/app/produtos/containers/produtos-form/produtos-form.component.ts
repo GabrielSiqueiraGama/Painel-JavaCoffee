@@ -8,6 +8,7 @@ import { ProdutosService } from '../../services/produtos.service';
 import { ActivatedRoute } from '@angular/router';
 import { Produto } from '../../models/produto';
 import { Ingrediente } from '../../models/Ingrediente';
+import { FormUtilsService } from '../../../shared/form/form-utils.service';
 
 @Component({
   selector: 'app-produtos-form',
@@ -34,7 +35,8 @@ export default class ProdutosFormComponent {
     private service: ProdutosService,
     private _snackBar: MatSnackBar,
     private location: Location,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public formUtils: FormUtilsService
     ) {}
 
     private retrieveIngrediente(produto: Produto){
@@ -42,21 +44,27 @@ export default class ProdutosFormComponent {
        if(produto?.ingredientes){
         produto.ingredientes.forEach(ingrediente => ingredientes.push(this.createIngrediente(ingrediente)))
        }else{
-        ingredientes.push(this.createIngrediente );
+        ingredientes.push(this.createIngrediente());
        }
       return ingredientes;
     }
   private createIngrediente(ingrediente: Ingrediente ={id: '', nome: ''}){
     return this.formBuilder.group({
       id: [ingrediente.id],
-      nome: [ingrediente.nome],
+      nome: [ingrediente.nome, [Validators.required]],
     })
   }
   onSubmit(){
-    console.log(this.form.value)
+    if(this.form.valid){
+      console.log(this.form.value)
     this.service.save(this.form.value)
       .subscribe(data => this.onSucess(), error=>this.onError());
     this.location.back();
+    }
+    else{
+      this.formUtils.validateAllFormFields(this.form);
+    }
+
   }
   onCancel(){
     this.location.back();
@@ -68,25 +76,17 @@ export default class ProdutosFormComponent {
   private onSucess(){
     this._snackBar.open("Produto salvo com sucesso.", '', {duration: 3000});
   }
-  getErrorMessage(fieldname: string){
-    const field = this.form.get(fieldname);
-
-    if(field?.hasError('required')){
-      return 'Campo obrigatorio.';
-    }
-    if(field?.hasError('minLength')){
-      const requiredLength = field.errors ? field.errors['minlength']['requiredlength']: 5;
-      return `Tamanho minimo de caracteres é de: ${requiredLength} do que o permitido.`;
-    }
-    if(field?.hasError('maxLength')){
-      const requiredLength = field.errors ? field.errors['maxlength']['requiredlength']: 100;
-      return `Tamanho maximo de caracteres é de: ${requiredLength} do que o permitido.`;
-    }
-    return 'erro';
-  }
 
   getIngredientesFromArray(){
     return (<UntypedFormArray>this.form.get('ingredientes')).controls;
+  }
+  addNewIngrediente(){
+    const ingredientes = this.form.get('ingredientes') as UntypedFormArray;
+    ingredientes.push(this.createIngrediente())
+  }
+  removeIngrediente(index: number){
+    const ingredientes = this.form.get('ingredientes') as UntypedFormArray;
+    ingredientes.removeAt(index)
   }
 
   ngOnInit(): void{

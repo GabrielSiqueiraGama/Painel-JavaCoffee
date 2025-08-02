@@ -7,7 +7,7 @@
       <mat-form-field class="full-width">
         <input matInput placeholder="Nome: " formControlName="nome" />
         <mat-error *ngIf="form.get('nome')?.invalid">{{
-          getErrorMessage("nome")
+          formUtils.getErrorMessage(form, "nome")
         }}</mat-error>
       </mat-form-field>
 
@@ -15,7 +15,7 @@
       <mat-form-field class="full-width">
         <input matInput placeholder="Descricao: " formControlName="descricao" />
         <mat-error *ngIf="form.get('descricao')?.invalid">{{
-          getErrorMessage("descricao")
+          formUtils.getErrorMessage(form, "descricao")
         }}</mat-error>
       </mat-form-field>
 
@@ -23,7 +23,7 @@
       <mat-form-field class="full-width">
         <input matInput placeholder="Preco: " formControlName="preco" />
         <mat-error *ngIf="form.get('preco')?.invalid">{{
-          getErrorMessage("preco")
+          formUtils.getErrorMessage(form, "preco")
         }}</mat-error>
       </mat-form-field>
 
@@ -31,7 +31,7 @@
       <mat-form-field class="full-width">
         <input matInput placeholder="Imagem: " formControlName="imagem" />
         <mat-error *ngIf="form.get('imagem')?.invalid">{{
-          getErrorMessage("imagem")
+          formUtils.getErrorMessage(form, "imagem")
         }}</mat-error>
       </mat-form-field>
 
@@ -47,30 +47,31 @@
 
       <mat-toolbar class="full-width">
         <span>Ingredientes</span>
-        <button mat-icon-button color="accent">
+        <button mat-icon-button color="accent" (click)="addNewIngrediente()">
           <mat-icon aria-label="Adicionar ingredientes">add</mat-icon>
         </button>
       </mat-toolbar>
-      <table style="width: 100%" formArrayName="ingredientes">
-        <tbody>
-          <tr
-            *ngFor="
-              let ingrediente of getIngredientesFromArray();
-              let i = index
-            "
-            [formGroupName]="i"
-          >
-            <td>
-              <mat-form-field class="full-width">
-                <input
-                  matInput
-                  placeholder="Nome do ingrediente: "
-                  formControlName="nome"
-                />
-              </mat-form-field>
-            </td>
-          </tr>
-        </tbody>
+      <table
+        style="width: 100%"
+        formArrayName="ingredientes"
+        *ngFor="let ingrediente of getIngredientesFromArray(); let i = index"
+      >
+        <tr [formGroupName]="i">
+          <td>
+            <mat-form-field class="full-width">
+              <input
+                matInput
+                placeholder="Nome do ingrediente: "
+                formControlName="nome"
+              />
+            </mat-form-field>
+          </td>
+          <td>
+            <button mat-icon-button color="warn" (click)="removeIngrediente(i)">
+              <mat-icon aria-label="Remover ingredientes">delete</mat-icon>
+            </button>
+          </td>
+        </tr>
       </table>
     </form>
   </mat-card-content>
